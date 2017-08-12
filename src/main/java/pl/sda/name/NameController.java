@@ -1,6 +1,7 @@
 package pl.sda.name;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,9 +34,13 @@ public class NameController {
         return nameService.getNthLength(length);
     }
 
-    @RequestMapping("/names")
+    @RequestMapping("/names/content")
     public List<String> getNamesContaining(@RequestParam(value="contains",defaultValue = "a")String contains){
         return nameService.getNamesContaining(contains);
+    }
+    @RequestMapping("/names/{subString}")
+    public List<String> getNamesWithSubstring(@PathVariable("subString") String subString){
+        return nameService.getNamesWithSubstring(subString);
     }
 //    @RequestMapping("/greeting")
 //    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {

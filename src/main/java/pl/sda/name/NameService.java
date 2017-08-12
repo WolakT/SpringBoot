@@ -48,4 +48,9 @@ public class NameService {
         List<String> list = nameLoader.getStringList();
         return list.stream().filter((s -> s.contains(letters))).collect(Collectors.toList());
     }
+
+    public List<String> getNamesWithSubstring(String subString){
+        List<String> list = nameLoader.getStringList();
+        return list.stream().filter(s->s.contains(subString)).collect(Collectors.toList());
+    }
 }
